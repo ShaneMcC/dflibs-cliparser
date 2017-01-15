@@ -26,6 +26,8 @@ jar {
     }
 }
 
+// TODO: Depend on dflibs-logger
+
 task wrapper(type: Wrapper) {
     gradleVersion = '3.3'
 }
