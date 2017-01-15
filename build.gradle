@@ -1,0 +1,31 @@
+plugins {
+  id 'java'
+}
+
+group = 'uk.org.dataforce.libs'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+sourceSets {
+    main.java.srcDirs = ['src']
+    test.java.srcDirs = ['test']
+}
+
+jar {
+    outputs.file "dist/dflibs-cliparser.jar"
+
+    manifest { }
+
+    doLast {
+        copy {
+            from jar.archivePath
+            into "dist/"
+            rename ".*", "dflibs-cliparser.jar"
+        }
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.3'
+}
