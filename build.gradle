@@ -1,5 +1,8 @@
 plugins {
   id 'java'
+  id 'maven'
+  id 'maven-publish'
+  id "com.jfrog.bintray" version "1.7"
 }
 
 group = 'uk.org.dataforce.libs'
@@ -10,6 +13,16 @@ targetCompatibility = 1.8
 sourceSets {
     main.java.srcDirs = ['src']
     test.java.srcDirs = ['test']
+}
+
+repositories {
+    maven {
+        url  "http://dl.bintray.com/shanemcc/dflibs"
+    }
+}
+
+dependencies {
+    compile group: 'uk.org.dataforce.libs', name: 'logger', version: '0.1'
 }
 
 jar {
@@ -26,7 +39,7 @@ jar {
     }
 }
 
-// TODO: Depend on dflibs-logger
+apply from: 'gradle/publishing.gradle'
 
 task wrapper(type: Wrapper) {
     gradleVersion = '3.3'

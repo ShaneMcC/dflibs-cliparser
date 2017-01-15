@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-// import uk.org.dataforce.libs.logger.Logger;
+import uk.org.dataforce.libs.logger.Logger;
 
 /**
  * Command Line argument parser.
@@ -93,11 +93,11 @@ public class CLIParser {
         if (validChar && validString) {
             if (param.getChr() != 0) {
                 params.put(""+param.getChr(), param);
-                // Logger.debug2("Added Param: [-"+param.getChr()+"]");
+                Logger.debug2("Added Param: [-"+param.getChr()+"]");
             }
             if (param.getString().length() > 0) {
                 params.put("-"+param.getString().toLowerCase(), param);
-                // Logger.debug2("Added Param: [--"+param.getString()+"]");
+                Logger.debug2("Added Param: [--"+param.getString()+"]");
             }
             paramList.add(param);
             return true;
@@ -259,10 +259,10 @@ public class CLIParser {
                     for (String name : givenParams) {
                         lastParam = getParam(name);
                         if (lastParam != null) {
-                            // Logger.debug("Got Param: -"+name);
+                            Logger.debug("Got Param: -"+name);
                             lastParam.incNumber();
                         } else {
-                            // Logger.warning("Unknown Param: -"+name);
+                            Logger.warning("Unknown Param: -"+name);
                             if (helpParam != null) {
                                 String command = "";
                                 if (helpParam.getString().length() > 0) {
@@ -271,7 +271,7 @@ public class CLIParser {
                                     command = ""+helpParam.getChr();
                                 }
                                 if (command.length() > 0) {
-                                    // Logger.warning("Use "+command+" to get help.");
+                                    Logger.warning("Use "+command+" to get help.");
                                 }
                             }
                             if (strict) {
@@ -283,10 +283,10 @@ public class CLIParser {
             } else {
                 if (arg.charAt(0) == '\\' && arg.length() > 1) { arg = arg.substring(1); }
                 if (lastParam != null && !allRedundant && lastParam.setValue(arg)) {
-                    // Logger.debug2("Param Value: "+arg);
+                    Logger.debug2("Param Value: "+arg);
                     lastParam = null;
                 } else {
-                    // Logger.debug2("Redundant Value: "+arg);
+                    Logger.debug2("Redundant Value: "+arg);
                     redundant.add(arg);
                 }
             }
