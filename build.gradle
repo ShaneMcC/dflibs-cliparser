@@ -22,7 +22,7 @@ repositories {
 }
 
 dependencies {
-    compile group: 'uk.org.dataforce.libs', name: 'logger', version: '0.1'
+    compile group: 'uk.org.dataforce.libs', name: 'logger', version: '0.4'
 }
 
 jar {
