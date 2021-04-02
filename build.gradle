@@ -2,7 +2,6 @@ plugins {
   id 'java'
   id 'maven'
   id 'maven-publish'
-  id "com.jfrog.bintray" version "1.8.5"
 }
 
 group = 'uk.org.dataforce.libs'
@@ -17,12 +16,12 @@ sourceSets {
 
 repositories {
     maven {
-        url  "http://dl.bintray.com/shanemcc/dflibs"
+        url  "https://maven.shanemcc.net/releases"
     }
 }
 
 dependencies {
-    compile group: 'uk.org.dataforce.libs', name: 'logger', version: '0.4'
+    compile group: 'uk.org.dataforce.libs', name: 'logger', version: '0.4.1'
 }
 
 jar {
